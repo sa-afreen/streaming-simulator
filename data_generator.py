@@ -1,6 +1,6 @@
 import random, time
 
-# Define possible user interaction types
+#Define possible user interaction types
 INTERACTIONS = ["click", "view", "purchase"]
 
 # Function to generate user interactions data randomly

@@ -5,8 +5,8 @@ import os
 import csv
 from pymongo import MongoClient
 
-# Initialize counters for tracking user and item interactions
-user_interactions = defaultdict(int)    # Maps user_id → number of interactions   
+#Initialize counters for tracking user and item interactions
+user_interactions = defaultdict(int)    #Maps user_id → number of interactions   
 item_interactions = defaultdict(int)    # Maps item_id → number of interactions
 records_processed = 0                   # Counter for total records processed
 

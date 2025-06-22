@@ -4,7 +4,7 @@ import threading, queue, time, json        #Import modules for threading, messag
 # Simulated Kafka topic using a thread-safe queue
 message_queue = queue.Queue()
 
-# Configuration parameters for message generation
+#Configuration parameters for message generation
 RATE_PER_SEC = 20       # Messages per second
 TOTAL_MESSAGES = 1000   # How many to send
 
