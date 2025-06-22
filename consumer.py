@@ -12,13 +12,21 @@ records_processed = 0                   # Counter for total records processed
 
 # Function to store aggregated results into MongoDB Atlas database
 def save_to_mongo(results):
-    uri = os.getenv("MONGO_URI")        # Get MongoDB URI from environment variable
-    client = MongoClient(uri)           # Connect to MongoDB
-    db = client["streaming_db"]         # Select database
-    stats = db["aggregates"]            # Select collection for storing aggregates
+    try:
+        uri = os.getenv("MONGO_URI")        # Get MongoDB URI from environment variable
+        if not uri:
+            print("⚠️  MONGO_URI not found in environment variables")
+            return
+            
+        client = MongoClient(uri)           # Connect to MongoDB
+        db = client["streaming_db"]         # Select database
+        stats = db["aggregates"]            # Select collection for storing aggregates
 
-    stats.insert_one(results)           # Insert the results into the collection
-    print("Aggregated results stored in MongoDB Atlas")
+        stats.insert_one(results)           # Insert the results into the collection
+        print("✅ Aggregated results stored in MongoDB Atlas")
+    except Exception as e:
+        print(f"⚠️  Failed to save to MongoDB: {e}")
+        print("📄 Results will still be saved to CSV file")
 
 def save_to_csv(results, filename="aggregates_output.csv"):
     fieldnames = results.keys()
