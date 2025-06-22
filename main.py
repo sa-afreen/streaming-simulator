@@ -3,7 +3,7 @@ from consumer import consume
 import threading
 import os
 
-# Function to run producer and consumer sequentially using threads
+#Function to run producer and consumer sequentially using threads
 def run_together():
     # Create thread to generate mock events at rate 20/s, total 100
     producer_thread = threading.Thread(target=produce, kwargs={"rate": 20, "total": 100})
